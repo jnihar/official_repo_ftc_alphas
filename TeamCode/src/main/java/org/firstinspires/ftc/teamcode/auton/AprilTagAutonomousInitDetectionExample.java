@@ -63,6 +63,7 @@ public class AprilTagAutonomousInitDetectionExample extends LinearOpMode
     int MIDDLE = 2;
     int RIGHT = 3;
 
+
     AprilTagDetection tagOfInterest = null;
 
     @Override
@@ -172,21 +173,31 @@ public class AprilTagAutonomousInitDetectionExample extends LinearOpMode
         }
 
         /* Actually do something useful */
+
         if(tagOfInterest == null || tagOfInterest.id == LEFT){
-            // trajectory
+            AprilTagDetection interest = tagOfInterest;
+            Orientation rot = Orientation.getOrientation(interest.pose.R, AxesReference.INTRINSIC, AxesOrder.YXZ, AngleUnit.DEGREES);
+            double aprilinput = interest.pose.x*FEET_PER_METER;
 
         } else if(tagOfInterest.id == MIDDLE){
 
-            // trajectory
+            AprilTagDetection interest = tagOfInterest;
+            Orientation rot = Orientation.getOrientation(interest.pose.R, AxesReference.INTRINSIC, AxesOrder.YXZ, AngleUnit.DEGREES);
+            double aprilinput = interest.pose.x*FEET_PER_METER;
 
-        } else{
-            // trajectory
+        } else if(tagOfInterest.id == RIGHT){
+            AprilTagDetection interest = tagOfInterest;
+            Orientation rot = Orientation.getOrientation(interest.pose.R, AxesReference.INTRINSIC, AxesOrder.YXZ, AngleUnit.DEGREES);
+            double aprilinput = interest.pose.x*FEET_PER_METER;
         }
+
+
 
 
         /* You wouldn't have this in your autonomous, this is just to prevent the sample from ending */
         while (opModeIsActive()) {sleep(20);}
     }
+
 
     void tagToTelemetry(AprilTagDetection detection)
     {

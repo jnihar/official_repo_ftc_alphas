@@ -1,5 +1,6 @@
 package org.firstinspires.ftc.teamcode;
 
+
 import com.qualcomm.robotcore.eventloop.opmode.LinearOpMode;
 import com.qualcomm.robotcore.hardware.IMU;
 import com.qualcomm.robotcore.eventloop.opmode.TeleOp;
@@ -8,6 +9,7 @@ import com.qualcomm.robotcore.hardware.DcMotorSimple;
 import com.qualcomm.hardware.rev.RevHubOrientationOnRobot;
 import org.firstinspires.ftc.robotcore.external.navigation.AngleUnit;
 
+import org.firstinspires.ftc.teamcode.auton.AprilTagAutonomousInitDetectionExample;
 @TeleOp(name="TeleOpFIELD")
 public class DriveTrain extends LinearOpMode {
     @Override
@@ -38,6 +40,9 @@ public class DriveTrain extends LinearOpMode {
         waitForStart();
 
         if (isStopRequested()) return;
+
+        AprilTagAutonomousInitDetectionExample april = new AprilTagAutonomousInitDetectionExample();
+        april.runOpMode();
 
         while (opModeIsActive()) {
             double y = gamepad1.left_stick_y; // Remember, Y stick value is reversed
@@ -72,6 +77,8 @@ public class DriveTrain extends LinearOpMode {
             backLeftMotor.setPower(backLeftPower);
             frontRightMotor.setPower(frontRightPower);
             backRightMotor.setPower(backRightPower);
+
+
         }
     }
 }
